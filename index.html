@@ -2,34 +2,41 @@
 <html>
 <head>
     <title>To Do APP</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js" /> -->
 </head>
 <body  ng-app="myApp" ng-controller="todoCtrl">
 <div >
 <h2 style="color: #ccff33">My Todo List</h2>
 
-<form ng-submit="todoAdd(newtodoInput)">
+<form ng-submit="todoAdd(newtodoInput)" class="well">
     <input type="text" ng-model="newtodoInput" size="50" placeholder="Add New">
     <input type="submit" value="Add New">
 </form>
 
-<div>Incompleted : {{remaining()}}</div>
-<div>Completed : {{todoList.length - remaining()}}</div>
 
 <!-- <a href="#" ng-click="delete()">Delete</a> -->
 
 <br>
 
 <div ng-repeat="todo in todoList | orderBy : 'subject'">
-  <button type="button" ng-click="delete(todo.id)">delete</button>
+  <button type="button" ng-click="delete(todo.id) " class="btn btn-danger">delete</button>
+  <button type="button" ng-click="edit()" class="btn btn-success">Edit</button>
     <input type="checkbox" ng-model="todo.completed" > <span ng-bind="todo.subject"></span>
+</div>
+<br>
+<div class="well" >
+  
+  <div>Incompleted Tasks : {{remaining()}}</div>
+<div>Completed Tasks : {{todoList.length - remaining()}}</div>
+
 </div>
 </div>
 <!-- <p><button ng-click="delete(todo.id)">Remove marked</button></p> -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 var app = angular.module('myApp', []);
