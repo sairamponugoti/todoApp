@@ -21,7 +21,7 @@
 
 <br>
 
-<div ng-repeat="todo in todoList">
+<div ng-repeat="todo in todoList | orderBy : 'subject'">
   <button type="button" ng-click="delete(todo.id)">delete</button>
     <input type="checkbox" ng-model="todo.completed" > <span ng-bind="todo.subject"></span>
 </div>
