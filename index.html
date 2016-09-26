@@ -21,8 +21,11 @@
 
 <div ng-repeat="todo in todoList | orderBy : 'subject'">
   <button type="button" ng-click="delete(todo.id) " class="btn btn-danger">delete</button>
-  <button type="button" ng-click="edit()" class="btn btn-success">Edit</button>
+  <!-- <button type="button" ng-click="edit()" class="btn btn-success">Edit</button> -->
+  <button type="submit" ng-hide="todo.editing" ng-click="change(todo); todo.editing =true" class="btn btn-success">Edit</button>
+       
     <input type="checkbox" ng-model="todo.completed" > <span ng-bind="todo.subject"></span>
+    
 </div>
 <br>
 <div class="well" >
@@ -55,6 +58,7 @@ app.controller('todoCtrl', function($scope,$http) {
 
 
       $scope.todoList = [];
+      $scope.newField = [];
 
   // Get all todos
   $http.get('http://rest.learncode.academy/api/johnbob/r2-1')
@@ -99,7 +103,6 @@ app.controller('todoCtrl', function($scope,$http) {
 
     
   };
-    
 
   
 
